@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private int score = 0;
     public int health = 5;
     public Text scoreText;
+    public Text healthText;
 
 
     // Fixed Update is called once per frame
@@ -37,15 +38,16 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Pickup")
         {
-            score += 1;
+            score++;
             SetScoreText();
             Destroy(other.gameObject);
-             //Debug.Log("Score: " + score);
+            // Debug.Log("Score: " + score);
         }
         if (other.tag == "Trap")
         {
             health--;
-            Debug.Log("Health: " + health);
+            SetHealthText();
+            // Debug.Log("Health: " + health);
         }
         if (other.tag == "Goal")
         {
@@ -55,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score: " + score.ToString();
         if (health == 0)
         {
             Debug.Log("Game Over!");
@@ -63,9 +64,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /* Score inspection */
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
         
+    }
+
+    /* Health inspection */
+    void SetHealthText()
+    {
+        healthText.text = "Health: " + health.ToString();
     }
 }
