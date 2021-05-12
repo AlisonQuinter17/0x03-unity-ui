@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody rb;
     public float speed = 1000f;
+    public Rigidbody rb;
     private int score = 0;
     public int health = 5;
     public Text scoreText;
     public Text healthText;
+    public Text winLoseText;
+    public Image winLoseBG;
 
 
     // Fixed Update is called once per frame
@@ -51,7 +53,12 @@ public class PlayerController : MonoBehaviour
         }
         if (other.tag == "Goal")
         {
-            Debug.Log("You win!");
+            winLoseBG.gameObject.SetActive(true);
+            winLoseBG.color = Color.green;
+            winLoseText.color = Color.black;
+            winLoseText.text = "You win!";
+            StartCoroutine(LoadScene(3));
+            // Debug.Log("You win!");
         }
     }
 
@@ -75,5 +82,12 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = "Health: " + health.ToString();
+    }
+
+    /* The scene restarts again after n seconds */
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(0);
     }
 }

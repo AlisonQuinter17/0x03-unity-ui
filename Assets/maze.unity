@@ -337,11 +337,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be38ae0eba51c364b8a1a4afcc6e61be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 51648536}
   speed: 1000
+  rb: {fileID: 51648536}
   health: 5
   scoreText: {fileID: 1205675567}
   healthText: {fileID: 993286065}
+  winLoseText: {fileID: 216629370}
+  winLoseBG: {fileID: 1991039726}
 --- !u!1 &54595760
 GameObject:
   m_ObjectHideFlags: 0
