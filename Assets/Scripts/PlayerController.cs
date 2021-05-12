@@ -12,11 +12,6 @@ public class PlayerController : MonoBehaviour
     public Text scoreText;
 
 
-    void SetScoreText()
-    {
-        scoreText.text = "Score: " + score.ToString();
-    }
-
     // Fixed Update is called once per frame
     public void FixedUpdate()
     {
@@ -42,10 +37,10 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Pickup")
         {
-            other.gameObject.SetActive(false);
-            score++;
+            score += 1;
             SetScoreText();
-            // Debug.Log("Score: " + score);
+            Destroy(other.gameObject);
+             //Debug.Log("Score: " + score);
         }
         if (other.tag == "Trap")
         {
@@ -60,10 +55,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        scoreText.text = "Score: " + score.ToString();
         if (health == 0)
         {
             Debug.Log("Game Over!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+    }
+
+    void SetScoreText()
+    {
+        scoreText.text = "Score: " + score.ToString();
+        
     }
 }
