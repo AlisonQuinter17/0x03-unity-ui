@@ -73,6 +73,11 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LoadScene(3));
             // Debug.Log("Game Over!");
         }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     /* Score inspection */
